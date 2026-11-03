@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """把 release 里下载的分卷合并成完整 gguf，并校验大小。
 
 用法:

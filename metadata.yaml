@@ -1,5 +1,5 @@
 name: astrbot_plugin_local_writer
-desc: 让对话模型通过工具调用本地无审查模型写小说正文，正文直发不经二次转述
+desc: 让对话模型（DeepSeek）通过工具调用把小说正文交给本地 KoboldCpp 无审查模型来写，正文直接投递不经二次转述。含五档尺度、连载记忆、主动创作、TTS 分段语音、7B/14B 热切换。
 version: 0.1.0
 author: yg
-repo: ""
+repo: https://github.com/kianakaslana20/astrbot_plugin_local_writer
