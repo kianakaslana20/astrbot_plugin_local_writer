@@ -54,7 +54,27 @@ QQ / Telegram 消息
 
 ### 1. 下载模型
 
-两个都是 `mradermacher` 的 abliterated 量化版，走 hf-mirror 国内可直连：
+两个都是 `mradermacher` 的 abliterated 量化版。**两种下法，选一个**：
+
+**方式 A：hf-mirror 直连（快，推荐）** —— 16 线程并发能到 3–5 MB/s，7B 约 15 分钟：
+
+```python
+python scripts/download-models.py 7b      # 4.37 GB
+python scripts/download-models.py 14b     # 8.37 GB
+```
+
+**方式 B：从本仓库 Release 下分卷** —— GitHub 单文件限 2 GB，所以模型被切成 1.76 GB 的分卷。
+下载 `v1.0.0` 里的 `*.part01 / part02 / part03`，放同一目录，然后：
+
+```python
+python scripts/join-models.py E:\AI-NSFW-Writer\models\Qwen2.5-7B-Instruct-abliterated.Q4_K_M.gguf
+```
+
+脚本会按顺序拼接并校验最终字节数（7B = 4684333312）。
+
+> 国内从 GitHub Release 拉 1.7 GB 分卷通常只有 100–400 KB/s，比 hf-mirror 慢一个数量级。方式 A 更省事。
+
+手动命令（想自己控制线程数时）：
 
 ```bash
 # 7B（4.37 GB，推荐先用这个）
