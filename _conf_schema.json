@@ -1,0 +1,174 @@
+{
+  "boldness": {
+    "description": "大胆程度",
+    "type": "int",
+    "default": 5,
+    "hint": "1 试探（只有张力）/ 2 升温（吻与抚摸）/ 3 直白（明确进入，不点器官）/ 4 露骨（器官与体液全写）/ 5 纵情（4 级 + 你勾选的元素）。工具调用、/写、主动创作共用这一档。"
+  },
+  "model_preset": {
+    "type": "string",
+    "description": "写作模型",
+    "options": [
+      "7b",
+      "14b",
+      "auto"
+    ],
+    "default": "7b",
+    "hint": "7b：快，一篇约 15 秒 | 14b：更稳更露骨，一篇约 2 分钟 | auto：用当前已加载的，不切换。切换会自动重启 KoboldCpp（约 90 秒）"
+  },
+  "koboldcpp_dir": {
+    "type": "string",
+    "description": "KoboldCpp 目录",
+    "default": "E:\\AI-NSFW-Writer\\koboldcpp",
+    "hint": "koboldcpp.exe 所在目录，切模型时用它启动"
+  },
+  "model_path_7b": {
+    "type": "string",
+    "description": "7B 模型文件路径",
+    "default": "E:\\AI-NSFW-Writer\\models\\Qwen2.5-7B-Instruct-abliterated.Q4_K_M.gguf",
+    "hint": ""
+  },
+  "model_path_14b": {
+    "type": "string",
+    "description": "14B 模型文件路径",
+    "default": "E:\\AI-NSFW-Writer\\models\\Qwen2.5-14B-Instruct-abliterated.Q4_K_M.gguf",
+    "hint": ""
+  },
+  "ctx_7b": {
+    "type": "int",
+    "description": "7B 上下文长度",
+    "default": 8192,
+    "hint": ""
+  },
+  "gl_7b": {
+    "type": "int",
+    "description": "7B GPU 卸载层数",
+    "default": 26,
+    "hint": "6G 显卡甜点值，OOM 就降到 24"
+  },
+  "ctx_14b": {
+    "type": "int",
+    "description": "14B 上下文长度",
+    "default": 4096,
+    "hint": "14B 显存紧，4096 才装得下"
+  },
+  "gl_14b": {
+    "type": "int",
+    "description": "14B GPU 卸载层数",
+    "default": 23,
+    "hint": "OOM 就降到 20 或 18"
+  },
+  "custom_tags": {
+    "description": "5 级额外元素",
+    "type": "string",
+    "default": "",
+    "hint": "只在 5 级生效，逗号分隔。例如：权力交换,言语羞辱,多人,背德。留空就用默认的纵情写法。"
+  },
+  "default_length": {
+    "description": "每次目标字数",
+    "type": "int",
+    "default": 600,
+    "hint": "200 - 1500。太短情节展不开，太长 QQ 会拆成好几条。"
+  },
+  "owner_session": {
+    "description": "主人的私聊会话",
+    "type": "string",
+    "default": "",
+    "hint": "主动创作发到这里，格式 机器人名:FriendMessage:QQ号。留空会自动用管理员 QQ 拼出来。"
+  },
+  "auto_enable": {
+    "description": "主动创作总开关（开着就会自己在后台往下写，写完发到主人私聊）",
+    "type": "bool",
+    "default": true,
+    "hint": "打开后她会自己往下写，写好了发给你。建议先把 /写 调顺口再开。"
+  },
+  "auto_min_interval": {
+    "description": "最小间隔（分钟）",
+    "type": "int",
+    "default": 120
+  },
+  "auto_max_interval": {
+    "description": "最大间隔（分钟）",
+    "type": "int",
+    "default": 120,
+    "hint": "每次在这两个数之间随机，120 和 120 就是固定两小时一次。"
+  },
+  "auto_active_hours": {
+    "description": "允许推送的时段",
+    "type": "string",
+    "default": "09:00-24:00",
+    "hint": "24 小时制，格式 09:00-24:00。时段外她照写，但不发。"
+  },
+  "auto_daily_limit": {
+    "description": "每天最多主动发几条",
+    "type": "int",
+    "default": 3,
+    "hint": "催更写的不算在这个数里。"
+  },
+  "auto_mode": {
+    "description": "主动创作写什么",
+    "type": "string",
+    "default": "continue",
+    "hint": "continue = 接着当前连载往下写；new = 每次从题材池里随机开新篇。"
+  },
+  "auto_topics": {
+    "description": "题材池",
+    "type": "string",
+    "default": "都市,校园,古风,职场,悬疑,科幻,异世界,雨夜重逢,旧友变味",
+    "hint": "auto_mode 选 new 时从这里随机抽，逗号分隔。"
+  },
+  "auto_skip_if_active": {
+    "description": "主人在说话时跳过",
+    "type": "int",
+    "default": 30,
+    "hint": "如果主人这么多分钟内有跟她说活，这一轮就不主动打扰。填 0 关闭这个判断。"
+  },
+  "notify_prefix": {
+    "description": "主动消息前缀",
+    "type": "string",
+    "default": "",
+    "hint": "发正文前加一句话，例如：（她翻到一段自己写的稿子）。留空就只发正文。"
+  },
+  "tts_enable": {
+    "description": "把正文配成语音发过来（默认开）",
+    "type": "bool",
+    "default": true,
+    "hint": "开着的时候，正文默认以 QQ 语音发送；TTS 失败会自动退回文字。"
+  },
+  "tts_provider_id": {
+    "description": "用哪个 TTS 语音",
+    "type": "string",
+    "default": "",
+    "hint": "填 provider 的 id，比如 breeze-voice / 大肥鱼语音-豆包复刻。留空 = 用当前默认的 TTS，没设默认就用第一个可用的。"
+  },
+  "tts_max_chars": {
+    "description": "每条语音最多多少字",
+    "type": "int",
+    "default": 120,
+    "hint": "40–400。太长容易发不出去，120 字大约 30 秒。"
+  },
+  "tts_max_segments": {
+    "description": "一篇最多发几条语音",
+    "type": "int",
+    "default": 8,
+    "hint": "超出条数的部分自动改成文字发，避免刷屏和被风控。"
+  },
+  "tts_send_text": {
+    "description": "语音之外再发一遍文字",
+    "type": "bool",
+    "default": false,
+    "hint": "想要边听边看就打开；只想要语音就关着。"
+  },
+  "tts_gap_seconds": {
+    "description": "两条语音之间隔几秒",
+    "type": "int",
+    "default": 2,
+    "hint": "0–10。太密集容易被 QQ 判成刷屏。"
+  },
+  "tts_keep_audio": {
+    "description": "保留生成的音频文件",
+    "type": "bool",
+    "default": false,
+    "hint": "只在排查问题时打开，音频会堆在 data/temp 里。"
+  }
+}
