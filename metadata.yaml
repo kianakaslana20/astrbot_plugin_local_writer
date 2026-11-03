@@ -1,0 +1,5 @@
+name: astrbot_plugin_local_writer
+desc: 让对话模型通过工具调用本地无审查模型写小说正文，正文直发不经二次转述
+version: 0.1.0
+author: yg
+repo: ""
